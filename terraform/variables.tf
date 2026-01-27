@@ -12,5 +12,10 @@ variable "instance_type" {
 }
 variable "key_name" {
     description = "EC2 key pair name"
+    type = string
   
+}
+variable "ami_id" {
+  description = "Ami id"
+  type = string
 }
