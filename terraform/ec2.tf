@@ -23,6 +23,13 @@ resource "aws_security_group" "sg_ec2" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "HTTP from anywhere"
+    protocol = "tcp"
+    to_port = 5000
+    from_port = 5000
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
     description = "SSH from anywhere"
     from_port   = 22
     to_port     = 22
