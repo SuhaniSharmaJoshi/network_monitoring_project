@@ -7,6 +7,8 @@ resource "aws_instance" "app_server" {
    
     associate_public_ip_address = true
     vpc_security_group_ids = [aws_security_group.sg_ec2.id]
+   
+    user_data = file("${path.module}/user_data.sh")
     tags = {
       Name = "Terraform-EC2-Docker"
     }
