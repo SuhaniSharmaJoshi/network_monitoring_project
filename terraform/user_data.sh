@@ -9,3 +9,5 @@ service docker start
 systemctl enable docker
 # Add ec2-user to docker group to run commands without sudo
 usermod -a -G docker ec2-user
+#install git
+dnf install -y git
