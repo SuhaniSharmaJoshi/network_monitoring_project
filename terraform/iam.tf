@@ -14,6 +14,7 @@ resource "aws_iam_policy" "cloudwatch_agent_policy" {
           "logs:PutLogEvents",
           "logs:DescribeLogStreams",
           "logs:DescribeLogGroups",
+          "ec2:DescribeTags",
           "ec2:DescribeInstances",
           "ssm:GetParameter"
         ]
