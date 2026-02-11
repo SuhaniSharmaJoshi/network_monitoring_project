@@ -61,7 +61,7 @@ cat <<EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
             "log_stream_name": "{instance_id}"
           },
           {
-            "file_path": "/home/ec2-user/YOUR_REPO/app/app.log",
+            "file_path": "/home/ec2-user/network_monitoring_project/app/app.log",
             "log_group_name": "/app/flask/logs",
             "log_stream_name": "{instance_id}"
           }
