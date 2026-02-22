@@ -11,10 +11,16 @@ systemctl enable docker
 usermod -a -G docker ec2-user
 #install git
 dnf install -y git
-#clone Project
-git clone https://github.com/SuhaniSharmaJoshi/network_monitoring_project.git
-cd network_monitoring_project
-cd app
+#clone Project(if not already exists)
+if [ ! -d "/home/ec2-user/network_monitoring_project"]; then
+  git clone https://github.com/SuhaniSharmaJoshi/network_monitoring_project.git
+fi
+#Go to app directory
+cd /home/ec2-user/network_monitoring_project/app || {echo "app folder not found! Exiting"; exit 1;}
+#Ensure log file exists
+touch /home/ec2-user/network_monitoring_project/app/app.log
+#permissions
+chown -R ec2-user:ec2-user /home/ec2-user/network_monitoring_project
 #build docker image
 docker build -t my-flask-app .
 docker run -d -p 80:5000 --name flask-app my-flask-app
@@ -72,7 +78,7 @@ cat <<EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
   }
 }
 EOF
-touch /home/ec2-user/network_monitoring_project/app/app.log
+
 #start cloudwatch agent
 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
 -a fetch-config \
