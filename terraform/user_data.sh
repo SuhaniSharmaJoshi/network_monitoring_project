@@ -52,6 +52,7 @@ cat <<EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
   },
 
   "logs": {
+    "force_flush_interval": 5,
     "logs_collected": {
       "files": {
         "collect_list": [
