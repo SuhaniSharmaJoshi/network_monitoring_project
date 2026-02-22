@@ -71,6 +71,7 @@ cat <<EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
   }
 }
 EOF
+touch /home/ec2-user/network_monitoring_project/app/app.log
 #start cloudwatch agent
 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
 -a fetch-config \
@@ -78,4 +79,4 @@ EOF
 -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
 -s
 #permissions
-chown -R ec2-user:ec2-user /home/ec2-user
+chown -R ec2-user:ec2-user /home/ec2-user/network_monitoring_project
